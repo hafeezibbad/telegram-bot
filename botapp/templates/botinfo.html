@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% import "_macros.html" as macros %}
+
+{% block title %}
+    Bot: {{ bot.username }}
+{% endblock %}
+
+{% block scripts %}
+    {{ super() }}
+    {{ pagedown.include_pagedown() }}
+{% endblock %}
+
+{% block page_content %}
+
+{% if bot %}
+<div class="page-header">
+    <h1>
+        Bot
+        {% if bot.username %}
+            {{bot.username }}
+        {% endif %}
+    </h1>
+</div>
+
+<div >
+    <h4>
+        Bot name:
+        {% if bot.first_name %}
+            {{ bot.first_name | capitalize }}
+        {% endif %}
+        {% if bot.last_name %}
+            {{ bot.last_name | capitalize }}
+        {% endif %}
+        <br>
+        <br>
+        ID: {{ bot.bot_id }}
+        <br>
+        <br>
+        Token: {{ bot.token }}
+        <br>
+        <br>
+        Status:
+        {% if bot.state %}
+            Polling
+        {% else %}
+            Not polling
+        {% endif %}
+        <br>
+        <br>
+    </h4>
+</div>
+
+<div class="message-tabs">
+    {% include '_messages.html' %}
+</div>
+
+{% if pagination %}
+<div class="pagination">
+    {{ macros.pagination_widget(pagination, '.bot_info', botid=bot.bot_id)}}
+</div>
+{% endif %}
+{% endif %}
+
+{% endblock %}

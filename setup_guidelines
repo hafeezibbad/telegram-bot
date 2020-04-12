@@ -1,0 +1,23 @@
+1. Check if you have mongodb installed and running on your machine.
+    a. MongoDB setup help: https://www.digitalocean.com/community/tutorials/how-to-install-mongodb-on-ubuntu-16-04
+    b. Change settings in config.py to update monogdb configuration.
+2. cd into cloned folder.
+3. Setup python-virtualenv using "virtualenv <venv-name>"
+    a. https://linuxconfig.org/setting-up-the-python-virtualenv-development-environment-on-debian-linux
+4. Install required packages using "<ven-name>/bin/pip install -r requirements.txt"
+5. Optional step: Generate some dummy data to for basic filtering functioning.
+    a. Invoke application-shell by "<venv-name>/bin/python manage.py shell"
+    b. Generate some (m) dummy bots by running "MyBot.generate_fake(m)" or making api call (POST) to "http://127.0.0.1:5000/private/gen_dummy_bots/<int:count>" where count= integer value i.e. m
+    c. Genearte some (n) posts logged by these fake bots "Message.generate_fake(n)". (Suggestions n >= m*5 for enough samples.) or making api call (POST) to "http://127.0.0.1:5000/private/gen_dummy_messages/<int:count>" where count= integer value i.e. n
+6. Run application by running "<venv-name>/bin/python manage.py runserver"
+7. Run test cases using command "<venv-name>/bin/python manage.py test"
+    a. Run individual test case modules by running command
+    "<venv-name>/bin/python manage.py test -t <test_module_name e.g.
+    test_procedures>"
+    b. Web UI tests use selenium==2.53.6 which is compatible with Firefox 46.0.
+    Please change its name from atest_web_ui --> test_web_ui to run.
+8. Open 127.0.0.1:5000/index in browser to access the application.
+9. For removing the dummy data generated previously.
+    a. Invoke application-shell by "<venv-name>/bin/python manage.py shell"
+    b. Remove all bots in database. "MyBot.objects.delete()" or use api call (PUT request) "http://127.0.0.1:5000/api/do_not_use/delete_all_bots"
+    c. Remove all messages in database. "Message.objects.delete()" or use api call (PUT request) "http://127.0.0.1:5000/api/do_not_use/delete_all_messages"

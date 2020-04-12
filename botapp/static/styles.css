@@ -1,0 +1,103 @@
+.header-fixed {
+    width: 100%;
+}
+
+.header-fixed > thead,
+.header-fixed > tbody,
+.header-fixed > thead > tr,
+.header-fixed > tbody > tr,
+.header-fixed > thead > tr > th,
+.header-fixed > tbody > tr > td {
+    display: block;
+}
+
+.header-fixed > tbody > tr:after,
+.header-fixed > thead > tr:after {
+    content: ' ';
+    display: block;
+    visibility: hidden;
+    clear: both;
+}
+
+.header-fixed > tbody {
+    overflow-y: auto;
+    height: 450px;
+}
+
+.header-fixed > tbody > tr > td,
+.header-fixed > thead > tr > th {
+    width: 20%;
+    float: left;
+}
+div.message-tabs {
+    margin-top: 16px;
+}
+ul.messages {
+    list-style-type: none;
+    padding: 0px;
+    margin: 16px 0px 0px 0px;
+    border-top: 1px solid #e0e0e0;
+}
+div.message-tabs ul.messages {
+    margin: 0px;
+    border-top: none;
+}
+ul.messages li.message {
+    padding: 8px;
+    border-bottom: 1px solid #e0e0e0;
+}
+ul.messages li.message:hover {
+    background-color: #f0f0f0;
+}
+div.message-date {
+    float: right;
+}
+div.message-author {
+    font-weight: bold;
+}
+div.message-thumbnail {
+    position: absolute;
+}
+div.message-content {
+    margin-left: 48px;
+    min-height: 48px;
+}
+div.message-footer {
+    text-align: right;
+}
+
+div.pagination {
+    width: 100%;
+    text-align: right;
+    padding: 0px;
+    margin: 0px;
+}
+div.flask-pagedown-preview {
+    margin: 10px 0px 10px 0px;
+    border: 1px solid #e0e0e0;
+    padding: 4px;
+}
+div.flask-pagedown-preview h1 {
+    font-size: 140%;
+}
+div.flask-pagedown-preview h2 {
+    font-size: 130%;
+}
+div.flask-pagedown-preview h3 {
+    font-size: 120%;
+}
+.message-body h1 {
+    font-size: 140%;
+}
+.message-body h2 {
+    font-size: 130%;
+}
+.message-body h3 {
+    font-size: 120%;
+}
+
+.content h4, h5{
+    display: inline;
+
+    white-space: nowrap;
+}

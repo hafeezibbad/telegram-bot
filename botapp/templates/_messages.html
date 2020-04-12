@@ -1,0 +1,35 @@
+<ul class="messages">
+    {% for message in messages %}
+    <li class="message">
+        <div class="message-content">
+            <div class="message-date">{{moment(message.date).fromNow() }}</div>
+            <div class="message-author">
+                {{ message.sender_username }}
+            </div>
+            <div class="message-body">
+                {% if message.text_content %}
+                    {{ message.text_content | safe }}
+                {% else %}
+                    Empty message
+                {% endif %}
+            </div>
+        </div>
+        <div class="message-footer">
+            <span class="label label-default">
+                Received from:
+                {% if message.sender_firstname %}
+                    {{ message.sender_firstname }}
+                {% endif %}
+                {% if message.sender_lastname %}
+                    {{ message.sender_lastname }}
+                {% endif %}
+                &nbsp;
+                By Bot:
+                {% if message.bot_id %}
+                {{ message.bot_id }}
+                {% endif %}
+            </span>
+        </div>
+    </li>
+    {% endfor %}
+</ul>

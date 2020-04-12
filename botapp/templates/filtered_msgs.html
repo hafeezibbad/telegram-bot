@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% import "_macros.html" as macros %}
+
+{% block title %}
+    Telegram Bot
+{% endblock %}
+
+{% block scripts %}
+{{ super() }}
+{{ pagedown.include_pagedown() }}
+{% endblock %}
+
+{% block page_content %}
+<div class="page-header">
+    <h1>
+        Filtered Messages
+    </h1>
+    <h2> Criteria </h2>
+    <h5>
+        Bot ID: {% if criteria.botid > 0 %}
+                    {{ criteria.botid }}
+                {% else %}
+                    Not specified
+                {% endif %}<br>
+        Time:   {% if criteria.time_off > 0 %}
+                    {{ criteria.time_off }}
+                {% else %}
+                    Not specified
+                {% endif %}<br>
+        Text:   {% if criteria.text == '#' %}
+                    Not specified
+                {% else %}
+                    {{ criteria.text }}
+                {% endif %} <br>
+        Sender username: {% if criteria.username == '#' %}
+                            Not specified
+                        {% else %}
+                            {{ criteria.username }}
+                        {% endif %}<br>
+        Sender name: {% if criteria.name == '#' %}
+                            Not specified
+                     {% else %}
+                         {{ criteria.name }}
+                     {% endif %}<br><br>
+    </h5>
+</div>
+
+<div class="message-tabs">
+    {% include '_messages.html' %}
+</div>
+
+{% if pagination %}
+<div class="pagination">
+    {{ macros.pagination_widget(pagination, '.filtered_messages',
+       botid=criteria.botid, time_off=criteria.time_off, text=criteria.text,
+       username=criteria.username, name=criteria.name)}}
+</div>
+{% endif %}
+{% endblock %}
